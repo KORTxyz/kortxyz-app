@@ -1,5 +1,8 @@
 // Import the framework and instantiate it
 import Fastify from 'fastify'
+
+import cors from '@fastify/cors'
+
 import ogcapi from '@kortxyz/ogcapi-gpkg'
 
 const fastify = Fastify({
@@ -10,8 +13,9 @@ const fastify = Fastify({
     },
 }
 })
+await fastify.register(cors)
 
-fastify.register(ogcapi, {
+await fastify.register(ogcapi, {
   baseurl: process.env.BASEURL,
   gpkg: process.env.GPKG, 
   skipLandingpage: false
