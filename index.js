@@ -1,4 +1,3 @@
-// Import the framework and instantiate it
 import Fastify from 'fastify'
 
 import cors from '@fastify/cors'
@@ -18,7 +17,8 @@ await fastify.register(cors)
 await fastify.register(ogcapi, {
   baseurl: process.env.BASEURL,
   gpkg: process.env.GPKG, 
-  skipLandingpage: false
+  skipLandingpage: false,
+  readonly:false
 });
 
 // Run the server!
